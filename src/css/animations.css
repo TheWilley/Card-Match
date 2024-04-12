@@ -2,6 +2,10 @@
   animation: move-up 0.3s forwards ease-in-out;
 }
 
+.shake {
+  animation: shake 0.3s forwards ease-in-out;
+}
+
 /*/ Explode animation */
 @keyframes move-up {
   0% {
@@ -11,5 +15,23 @@
   100% {
     transform: translate(0, -100px);
     opacity: 0;
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  25% {
+    transform: translate3d(-5px, 0, 0);
+  }
+  50% {
+    transform: translate3d(10px, 0, 0);
+  }
+  75% {
+    transform: translate3d(-10px, 0, 0);
+  }
+  100% {
+    transform: translate3d(15px, 0, 0);
   }
 }

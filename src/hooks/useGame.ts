@@ -161,7 +161,7 @@ export default function useGame() {
           shuffleDeck();
           removeAJoker();
         },
-        { name: 'move-up', condition: true }
+        { name: 'shake', condition: true }
       );
     }
 
