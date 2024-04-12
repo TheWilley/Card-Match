@@ -1,4 +1,13 @@
+@font-face {
+  font-family: Capriola;
+  src: url('../assets/Capriola-Regular.ttf') format('truetype');
+}
+
 .score {
+  font-family: Capriola, sans-serif;
+}
+
+.scorediff {
   opacity: 0;
   display: inline-block;
 }
