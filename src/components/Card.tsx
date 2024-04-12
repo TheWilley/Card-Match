@@ -4,12 +4,13 @@ type Props = {
   card: PlayingCard;
   frontImage: string;
   backImage: string;
+  activeAnimation: string;
   onClick?: () => void;
 };
 
 function Card(props: Props) {
   return (
-    <div className='flip-card'>
+    <div className={`flip-card ${props.activeAnimation}`}>
       <div className={`flip-card-inner ${!props.card.display && 'flip-card-flip'}`}>
         <div className='flip-card-front'>
           <img

@@ -21,6 +21,7 @@ function GameBoard() {
                   card={card}
                   frontImage={getSprite(card.image[0], card.image[1]) || ''}
                   backImage={getSprite(3, 14) || ''}
+                  activeAnimation={card.activeAnimations}
                   onClick={() => {
                     addClickedCard(card);
                   }}

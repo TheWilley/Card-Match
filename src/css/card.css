@@ -42,19 +42,3 @@
 .flip-card-back {
   transform: rotateY(180deg);
 }
-
-.explosion {
-  animation: explode 0.5s;
-}
-
-/*/ Explode animation */
-@keyframes explode {
-  0% {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
-  }
-  100% {
-    transform: translate(0, -100px);
-    opacity: 0;
-  }
-}

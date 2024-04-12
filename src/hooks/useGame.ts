@@ -77,19 +77,52 @@ export default function useGame() {
     joker && removeCard(joker);
   };
 
+  const addAnimationToClickedCards = (animationName: string) => {
+    for (const card of clickedCards) {
+      card.activeAnimations = animationName;
+    }
+
+    setDeck([...deck]);
+  };
+
+  const removeAnimationFromClickedCards = () => {
+    for (const card of clickedCards) {
+      card.activeAnimations = '';
+    }
+
+    setDeck([...deck]);
+  };
+
   /**
    * Perform an action after a certain amount of time.
    * @param callback The callback to execute.
    */
-  const performAction = (callback?: () => void, time: number = 800) => {
+  const performAction = (
+    callback?: () => void,
+    animation?: {
+      name: string;
+      condition: boolean;
+    },
+    time: number = 800
+  ) => {
     enableCards(false);
-    // Let the user see the cards for a while.
+
+    // Add animation to the clicked cards.
     setTimeout(() => {
-      callback && callback();
-      flipCards();
-      resetClickedCards();
-      enableCards(true);
+      animation?.condition && addAnimationToClickedCards(animation.name);
     }, time);
+
+    // Let the user see the cards for a while.
+    setTimeout(
+      () => {
+        animation?.condition && removeAnimationFromClickedCards();
+        callback && callback();
+        flipCards();
+        resetClickedCards();
+        enableCards(true);
+      },
+      time + (animation?.condition ? 300 : 0)
+    );
   };
 
   const increaseScore = (reason: string) => {
@@ -134,14 +167,17 @@ export default function useGame() {
     // If two cards are clicked, check if they match.
     if (clickedCards.length === 2) {
       const matched = clickedCards[0].value === clickedCards[1].value;
-      performAction(() => {
-        if (matched) {
-          removeMatchedCards();
-          increaseScore('match');
-        } else {
-          decreaseScore('mismatch');
-        }
-      });
+      performAction(
+        () => {
+          if (matched) {
+            removeMatchedCards();
+            increaseScore('match');
+          } else {
+            decreaseScore('mismatch');
+          }
+        },
+        { name: 'move-up', condition: matched }
+      );
     }
   };
 

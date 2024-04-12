@@ -4,6 +4,7 @@ export class PlayingCard {
   private _value: string;
   private _image: [number, number];
   private _display: boolean;
+  private _activeAnimation: string;
   private _enabled: boolean;
 
   constructor(
@@ -12,6 +13,7 @@ export class PlayingCard {
     value: string,
     image: [number, number],
     display: boolean = false,
+    activeAnimation: string,
     enabled: boolean = true
   ) {
     this._id = id;
@@ -19,6 +21,7 @@ export class PlayingCard {
     this._value = value;
     this._image = image;
     this._display = display;
+    this._activeAnimation = activeAnimation;
     this._enabled = enabled;
   }
 
@@ -42,12 +45,20 @@ export class PlayingCard {
     return this._display;
   }
 
+  get activeAnimations() {
+    return this._activeAnimation;
+  }
+
   get enabled() {
     return this._enabled;
   }
 
   set display(display: boolean) {
     this._display = display;
+  }
+
+  set activeAnimations(activeAnimations: string) {
+    this._activeAnimation = activeAnimations;
   }
 
   set enabled(enabled: boolean) {
@@ -79,7 +90,7 @@ export class Deck {
     let index = 0;
     this._suits.forEach((suit, i) => {
       this._values.forEach((value, e) => {
-        this._deck.push(new PlayingCard(index, suit, value, [i, e]));
+        this._deck.push(new PlayingCard(index, suit, value, [i, e], false, '', true));
         index++;
       });
     });

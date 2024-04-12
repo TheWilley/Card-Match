@@ -1,0 +1,15 @@
+.move-up {
+  animation: move-up 0.3s forwards ease-in-out;
+}
+
+/*/ Explode animation */
+@keyframes move-up {
+  0% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -100px);
+    opacity: 0;
+  }
+}
