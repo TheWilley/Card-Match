@@ -1,0 +1,29 @@
+.score {
+    opacity: 0;
+    display: inline-block;
+}
+
+.positive-score {
+  color: green;
+  animation: moveUp 0.5s;
+}
+
+.negative-score {
+  color: red;
+  animation: moveUp 0.5s;
+}
+
+/*/ Move up animation */
+@keyframes moveUp {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}

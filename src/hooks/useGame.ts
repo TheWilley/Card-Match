@@ -5,7 +5,8 @@ import lodash from 'lodash';
 export default function useGame() {
   const [deck, setDeck] = useState(new Deck().deck);
   const [clickedCards, setClickedCards] = useState<PlayingCard[]>([]);
-  const [points, setPoints] = useState(0);
+  const [score, setScore] = useState(0);
+  const [scoreDiff, setScoreDiff] = useState(0);
 
   /**
    * Add clicked card to the clicked cards array.
@@ -94,10 +95,12 @@ export default function useGame() {
   const increaseScore = (reason: string) => {
     switch (reason) {
       case 'match':
-        setPoints(points + 10);
+        setScoreDiff(10);
+        setScore(score + 10);
         break;
       case 'joker':
-        setPoints(points + 5);
+        setScoreDiff(5);
+        setScore(score + 5);
         break;
       default:
         break;
@@ -105,10 +108,11 @@ export default function useGame() {
   };
 
   const decreaseScore = (reason: string) => {
-    if (points === 0) return;
+    if (score === 0) return;
     switch (reason) {
       case 'mismatch':
-        setPoints(points - 2);
+        setScoreDiff(-2);
+        setScore(score - 2);
         break;
       default:
         break;
@@ -145,5 +149,5 @@ export default function useGame() {
     check();
   }, [clickedCards]);
 
-  return { clickedCards, deck, points, addClickedCard, setDeck };
+  return { clickedCards, deck, score, scoreDiff, addClickedCard, setDeck };
 }
