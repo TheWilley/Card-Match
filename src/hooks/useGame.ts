@@ -153,7 +153,7 @@ export default function useGame() {
   /**
    * Check for different conditions and perform actions accordingly.
    */
-  const check = () => {
+  const checkState = () => {
     // If clikedcard has joker, shuffle the deck.
     if (clickedCards.some((card) => card.value === 'joker')) {
       performAction(
@@ -182,8 +182,18 @@ export default function useGame() {
     }
   };
 
+  /**
+   * Check if the player has won the game.
+   */
+  const checkWin = () => {
+    if (deck.filter((card) => card.value !== 'jack' ).length === 0) {
+      alert('You win!');
+    }
+  };
+
   useEffect(() => {
-    check();
+    checkState();
+    checkWin();
   }, [clickedCards]);
 
   return { clickedCards, deck, score, scoreDiff, addClickedCard, setDeck };
