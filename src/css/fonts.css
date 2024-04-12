@@ -1,0 +1,8 @@
+@font-face {
+  font-family: Capriola;
+  src: url('../assets/Capriola-Regular.ttf') format('truetype');
+}
+
+.capirola {
+  font-family: Capriola, sans-serif;
+}

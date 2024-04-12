@@ -21,7 +21,7 @@ function Score(props: Props) {
   }, [props.score, props.scoreDiff]);
 
   return (
-    <div className='score sticky top-0 z-30 rounded-none border-b-2 bg-white text-[#f16295] md:rounded-bl-lg md:rounded-br-lg md:border-l-2 md:border-r-2'>
+    <div className='capirola sticky top-0 z-30 rounded-none border-b-2 bg-white text-[#f16295] md:rounded-bl-lg md:rounded-br-lg md:border-l-2 md:border-r-2'>
       <span className='text-6xl'>{props.score}</span>
       <span ref={scoreRef} className='scorediff text-xl'>
         {props.scoreDiff}

@@ -1,6 +1,7 @@
 @import './css/card.css';
 @import './css/score.css';
 @import './css/animations.css';
+@import './css/fonts.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
