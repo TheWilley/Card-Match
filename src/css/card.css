@@ -6,7 +6,7 @@
   background-color: transparent;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
   height: 120px;
-  width: 100%
+  width: 100%;
 }
 
 .flip-card:hover {

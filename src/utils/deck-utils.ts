@@ -71,7 +71,7 @@ export class Deck {
     'jack',
     'queen',
     'king',
-    'joker'
+    'joker',
   ];
   private _deck: PlayingCard[] = [];
 

@@ -5,7 +5,20 @@
 @tailwind utilities;
 
 html {
-  background: repeating-linear-gradient(0deg, #ffffff 0, #ffffff 20%, transparent 0, transparent 50%),repeating-linear-gradient(135deg, #fde0ff 0, #fde0ff 10%, transparent 0, transparent 50%);
+  background: repeating-linear-gradient(
+      0deg,
+      #ffffff 0,
+      #ffffff 20%,
+      transparent 0,
+      transparent 50%
+    ),
+    repeating-linear-gradient(
+      135deg,
+      #fde0ff 0,
+      #fde0ff 10%,
+      transparent 0,
+      transparent 50%
+    );
   background-size: 6em 6em;
   background-color: #ffffff;
   opacity: 1;
