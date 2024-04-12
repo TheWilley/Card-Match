@@ -111,8 +111,8 @@ export default function useGame() {
     if (score === 0) return;
     switch (reason) {
       case 'mismatch':
-        setScoreDiff(-2);
-        setScore(score - 2);
+        setScoreDiff(-1);
+        setScore(score - 1);
         break;
       default:
         break;
