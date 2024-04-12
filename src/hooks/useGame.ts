@@ -82,15 +82,13 @@ export default function useGame() {
       card.activeAnimations = animationName;
     }
 
-    setDeck([...deck]);
+    setDeck((prev) => [...prev]);
   };
 
   const removeAnimationFromClickedCards = () => {
     for (const card of clickedCards) {
       card.activeAnimations = '';
     }
-
-    setDeck([...deck]);
   };
 
   /**
@@ -107,22 +105,22 @@ export default function useGame() {
   ) => {
     enableCards(false);
 
+    // The action to perform.
+    const action = () => {
+      animation?.condition && removeAnimationFromClickedCards();
+      callback && callback();
+      flipCards();
+      resetClickedCards();
+      enableCards(true);
+    };
+
     // Add animation to the clicked cards.
     setTimeout(() => {
       animation?.condition && addAnimationToClickedCards(animation.name);
     }, time);
 
     // Let the user see the cards for a while.
-    setTimeout(
-      () => {
-        animation?.condition && removeAnimationFromClickedCards();
-        callback && callback();
-        flipCards();
-        resetClickedCards();
-        enableCards(true);
-      },
-      time + (animation?.condition ? 300 : 0)
-    );
+    setTimeout(action, time + (animation?.condition ? 300 : 0));
   };
 
   const increaseScore = (reason: string) => {
@@ -158,10 +156,13 @@ export default function useGame() {
   const check = () => {
     // If clikedcard has joker, shuffle the deck.
     if (clickedCards.some((card) => card.value === 'joker')) {
-      performAction(() => {
-        shuffleDeck();
-        removeAJoker();
-      });
+      performAction(
+        () => {
+          shuffleDeck();
+          removeAJoker();
+        },
+        { name: 'move-up', condition: true }
+      );
     }
 
     // If two cards are clicked, check if they match.
