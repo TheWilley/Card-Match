@@ -124,6 +124,10 @@ export default function useGame() {
     setTimeout(action, time + (animation?.condition ? 300 : 0));
   };
 
+  /**
+   * Increase the score.
+   * @param reason The reason for increasing the score.
+   */
   const increaseScore = (reason: string) => {
     switch (reason) {
       case 'match':
@@ -139,6 +143,10 @@ export default function useGame() {
     }
   };
 
+  /**
+   * Decrease the score.
+   * @param reason The reason for decreasing the score.
+   */
   const decreaseScore = (reason: string) => {
     if (score === 0) return;
     switch (reason) {
