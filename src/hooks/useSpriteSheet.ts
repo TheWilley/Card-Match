@@ -44,7 +44,7 @@ export default function useSpriteSheet(
       const canvas = document.createElement('canvas');
       canvas.width = columns * cellWidth;
       canvas.height = rows * cellHeight;
-      const ctx = canvas.getContext('2d');
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
 
       if (ctx) {
         ctx.drawImage(image, 0, 0);

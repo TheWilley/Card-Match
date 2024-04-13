@@ -7,6 +7,7 @@ export default function useGame() {
   const [clickedCards, setClickedCards] = useState<PlayingCard[]>([]);
   const [score, setScore] = useState(0);
   const [scoreDiff, setScoreDiff] = useState(0);
+  const [gameWon, setGameWon] = useState(false);
 
   /**
    * Add clicked card to the clicked cards array.
@@ -186,9 +187,20 @@ export default function useGame() {
    * Check if the player has won the game.
    */
   const checkWin = () => {
-    if (deck.filter((card) => card.value !== 'jack' ).length === 0) {
-      alert('You win!');
+    if (deck.filter((card) => card.value !== 'jack').length === 0) {
+      setGameWon(true);
     }
+  };
+
+  /**
+   * Reset the game.
+   */
+  const resetGame = () => {
+    setDeck(new Deck().deck);
+    setClickedCards([]);
+    setScore(0);
+    setScoreDiff(0);
+    setGameWon(false);
   };
 
   useEffect(() => {
@@ -196,5 +208,5 @@ export default function useGame() {
     checkWin();
   }, [clickedCards]);
 
-  return { clickedCards, deck, score, scoreDiff, addClickedCard, setDeck };
+  return { clickedCards, deck, score, scoreDiff, gameWon, addClickedCard, setDeck, resetGame };
 }
