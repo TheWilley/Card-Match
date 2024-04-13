@@ -1,3 +1,5 @@
+import lodash from 'lodash';
+
 export class PlayingCard {
   private _id: number;
   private _suit: string;
@@ -94,6 +96,9 @@ export class Deck {
         index++;
       });
     });
+
+    // Shuffle the deck
+    this._deck = lodash.shuffle(this._deck);
   }
 
   get deck() {
