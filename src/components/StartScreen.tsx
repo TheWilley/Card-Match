@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import highscoreImage from '../assets/highscore.png';
+import Footer from './Footer';
 
 type Props = {
   score: number;
@@ -46,6 +47,9 @@ function StartScreen(props: Props) {
           <span className='text-6xl'>{props.highscore}</span>
           <img src={highscoreImage} className='absolute left-28 top-0 w-28' />
         </div>
+      </div>
+      <div style={{ opacity: props.gameWon ? '100%' : '0', transition: 'opacity' }}>
+        <Footer />
       </div>
     </div>
   );
