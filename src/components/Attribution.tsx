@@ -30,13 +30,22 @@ function Footer() {
                   "Capriola" font by Viktoriya Grabowska
                 </a>
               </li>
+              <li>
+                <a
+                  href='https://github.com/TheWilley/CardMatchPro'
+                  target='_blank'
+                  className='hover:text-pink-500'
+                >
+                  Game created by TheWilley (Source Code)
+                </a>
+              </li>
             </ul>
             <form
               method='dialog'
               onSubmit={() => setShowDialog(false)}
               className='flex justify-center'
             >
-              <button className='capirola text-md mt-2 block rounded-full border-2 p-3 transition-all ease-in-out text-pink-500 hover:bg-pink-500 hover:text-white'>
+              <button className='capirola text-md mt-2 block rounded-full border-2 p-3 text-pink-500 transition-all ease-in-out hover:bg-pink-500 hover:text-white'>
                 OK
               </button>
             </form>
