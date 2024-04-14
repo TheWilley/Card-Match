@@ -9,7 +9,7 @@ type Props = {
   resetGame: () => void;
 };
 
-function Score(props: Props) {
+function StartScreen(props: Props) {
   const scoreRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
@@ -51,4 +51,4 @@ function Score(props: Props) {
   );
 }
 
-export default Score;
+export default StartScreen;

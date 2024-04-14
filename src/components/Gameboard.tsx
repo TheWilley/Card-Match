@@ -3,7 +3,7 @@ import PlayingCard from '../components/Card';
 import { getImageUrl } from '../utils/image-utils';
 import useSpriteSheet from '../hooks/useSpriteSheet';
 import useGame from '../hooks/useGame';
-import Score from './Score';
+import StartScreen from './StartScreen';
 
 function GameBoard() {
   const getSprite = useSpriteSheet(getImageUrl('cards'), 15, 4, 100, 144);
@@ -11,7 +11,7 @@ function GameBoard() {
 
   return (
     <>
-      <Score score={score} highscore={getHighScoreFromLocalStorage()} scoreDiff={scoreDiff} gameWon={gameWon} resetGame={resetGame} />
+      <StartScreen score={score} highscore={getHighScoreFromLocalStorage()} scoreDiff={scoreDiff} gameWon={gameWon} resetGame={resetGame} />
       <Flipper flipKey={JSON.stringify(deck)} className='mt-2'>
         <div className='grid w-full grid-cols-2 gap-1 p-3 xs:grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-12'>
           {deck.map((card) => (
