@@ -36,10 +36,10 @@ function Score(props: Props) {
         </span>
         <hr className='mt-2 border-2 border-dashed border-pink-300' />
         <button
-          className='capirola text-md mb-4 mt-4 block rounded-full border-2 p-3 transition-all ease-in-out hover:bg-pink-500 hover:text-white'
+          className='capirola text-md mb-4 mt-4 block w-full rounded-full border-2 p-3 transition-all ease-in-out hover:bg-pink-500 hover:text-white'
           onClick={props.resetGame}
         >
-          Play Again
+          Play
         </button>
         <hr className='mb-2 border-2 border-dashed border-pink-300' />
         <div className='relative'>

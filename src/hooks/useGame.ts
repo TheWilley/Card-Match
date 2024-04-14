@@ -6,7 +6,7 @@ export default function useGame() {
   const [clickedCards, setClickedCards] = useState<PlayingCard[]>([]);
   const [score, setScore] = useState(0);
   const [scoreDiff, setScoreDiff] = useState(0);
-  const [gameWon, setGameWon] = useState(false);
+  const [gameWon, setGameWon] = useState(true);
 
   /**
    * Add clicked card to the clicked cards array.
