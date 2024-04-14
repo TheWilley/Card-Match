@@ -177,11 +177,35 @@ export default function useGame() {
   };
 
   /**
+   * Set the high score in the local storage.
+   */
+  const setHighScoreInLocalStorage = () => {
+    const highScore = localStorage.getItem('high-score');
+    if (highScore) {
+      if (score > parseInt(highScore)) {
+        localStorage.setItem('high-score', score.toString());
+      }
+    } else {
+      localStorage.setItem('high-score', score.toString());
+    }
+  };
+
+  /**
+   * Get the high score from the local storage.
+   * @returns The high score from the local storage.
+   */
+  const getHighScoreFromLocalStorage = () => {
+    const highScore = localStorage.getItem('high-score');
+    return highScore ? parseInt(highScore) : 0;
+  };
+
+  /**
    * Check if the player has won the game.
    */
   const checkWin = () => {
     if (deck.filter((card) => card.value !== 'jack').length === 0) {
       setGameWon(true);
+      setHighScoreInLocalStorage();
     }
   };
 
@@ -210,5 +234,6 @@ export default function useGame() {
     addClickedCard,
     setDeck,
     resetGame,
+    getHighScoreFromLocalStorage,
   };
 }
