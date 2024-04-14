@@ -12,7 +12,7 @@ function Card(props: Props) {
   return (
     <div className={`flip-card ${props.activeAnimation}`}>
       <div className={`flip-card-inner ${!props.card.display && 'flip-card-flip'}`}>
-        <div className='flip-card-back'>
+        <div className='flip-card-front'>
           <img
             onClick={() => props.card.enabled && props.onClick && props.onClick()}
             key={props.card.id}
@@ -21,7 +21,7 @@ function Card(props: Props) {
             alt={props.card.value}
           />
         </div>
-        <div className='flip-card-front'>
+        <div className='flip-card-back'>
           <img
             onClick={() => props.card.enabled && props.onClick && props.onClick()}
             key={props.card.id}
