@@ -116,7 +116,11 @@ export default function useGame() {
     switch (reason) {
       case 'match':
         setScoreDiff(10);
-        setScore(score + 10);
+        setScore((prev) => prev + 10);
+        break;
+      case 'color-match':
+        setScoreDiff(15);
+        setScore((prev) => prev + 15);
         break;
       default:
         break;
@@ -132,7 +136,7 @@ export default function useGame() {
     switch (reason) {
       case 'mismatch':
         setScoreDiff(-1);
-        setScore(score - 1);
+        setScore((prev) => prev - 1);
         break;
       default:
         break;
@@ -146,17 +150,29 @@ export default function useGame() {
     // If two cards are clicked, check if they match.
     if (clickedCards.length === 2) {
       const matched = clickedCards[0].value === clickedCards[1].value;
-      performAction(
-        () => {
-          if (matched) {
+      const colorMatched =
+        clickedCards[0].color === clickedCards[1].color &&
+        clickedCards[0].value === clickedCards[1].value;
+
+      if (colorMatched) {
+        performAction(
+          () => {
+            removeMatchedCards();
+            increaseScore('color-match');
+          },
+          { name: 'move-up', condition: colorMatched }
+        );
+      } else if (matched) {
+        performAction(
+          () => {
             removeMatchedCards();
             increaseScore('match');
-          } else {
-            decreaseScore('mismatch');
-          }
-        },
-        { name: 'move-up', condition: matched }
-      );
+          },
+          { name: 'move-up', condition: matched }
+        );
+      } else {
+        performAction(() => decreaseScore('mismatch'));
+      }
     }
   };
 
@@ -185,5 +201,14 @@ export default function useGame() {
     checkWin();
   }, [clickedCards]);
 
-  return { clickedCards, deck, score, scoreDiff, gameWon, addClickedCard, setDeck, resetGame };
+  return {
+    clickedCards,
+    deck,
+    score,
+    scoreDiff,
+    gameWon,
+    addClickedCard,
+    setDeck,
+    resetGame,
+  };
 }

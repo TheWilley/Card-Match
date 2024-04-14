@@ -3,6 +3,7 @@ import lodash from 'lodash';
 export class PlayingCard {
   private _id: number;
   private _suit: string;
+  private _color: string;
   private _value: string;
   private _image: [number, number];
   private _display: boolean;
@@ -12,6 +13,7 @@ export class PlayingCard {
   constructor(
     id: number,
     suit: string,
+    color: string,
     value: string,
     image: [number, number],
     display: boolean = false,
@@ -20,6 +22,7 @@ export class PlayingCard {
   ) {
     this._id = id;
     this._suit = suit;
+    this._color = color;
     this._value = value;
     this._image = image;
     this._display = display;
@@ -33,6 +36,10 @@ export class PlayingCard {
 
   get suit() {
     return this._suit;
+  }
+
+  get color() {
+    return this._color;
   }
 
   get value() {
@@ -87,12 +94,26 @@ export class Deck {
     'joker',
   ];
   private _deck: PlayingCard[] = [];
+  private getColor(suit: string) {
+    return suit === 'clubs' || suit === 'spades' ? 'black' : 'red';
+  }
 
   constructor() {
     let index = 0;
     this._suits.forEach((suit, i) => {
       this._values.forEach((value, e) => {
-        this._deck.push(new PlayingCard(index, suit, value, [i, e], false, '', true));
+        this._deck.push(
+          new PlayingCard(
+            index,
+            suit,
+            this.getColor(suit),
+            value,
+            [i, e],
+            false,
+            '',
+            true
+          )
+        );
         index++;
       });
     });
