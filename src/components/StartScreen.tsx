@@ -45,7 +45,10 @@ function StartScreen(props: Props) {
         <hr className='mb-2 border-2 border-dashed border-pink-300' />
         <div className='relative'>
           <span className='text-6xl'>{props.highscore}</span>
-          <img src={highscoreImage} className='absolute left-28 top-0 w-28' />
+          <img
+            src={highscoreImage}
+            className='bottom-2 absolute left-[calc(100%+20px)] w-48 max-w-none'
+          />
         </div>
       </div>
       <div style={{ opacity: props.gameWon ? '100%' : '0', transition: 'opacity' }}>
