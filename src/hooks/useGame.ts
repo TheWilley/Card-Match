@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Deck, PlayingCard } from '../utils/deck-utils';
-import lodash from 'lodash';
 
 export default function useGame() {
   const [deck, setDeck] = useState(new Deck().deck);
@@ -63,21 +62,6 @@ export default function useGame() {
     }
   };
 
-  /**
-   * Shuffle the deck.
-   */
-  const shuffleDeck = () => {
-    setDeck(lodash.shuffle(deck));
-  };
-
-  /**
-   * Remove a joker from the deck.
-   */
-  const removeAJoker = () => {
-    const joker = deck.find((card) => card.value === 'joker');
-    joker && removeCard(joker);
-  };
-
   const addAnimationToClickedCards = (animationName: string) => {
     for (const card of clickedCards) {
       card.activeAnimations = animationName;
@@ -134,10 +118,6 @@ export default function useGame() {
         setScoreDiff(10);
         setScore(score + 10);
         break;
-      case 'joker':
-        setScoreDiff(5);
-        setScore(score + 5);
-        break;
       default:
         break;
     }
@@ -163,17 +143,6 @@ export default function useGame() {
    * Check for different conditions and perform actions accordingly.
    */
   const checkState = () => {
-    // If clikedcard has joker, shuffle the deck.
-    if (clickedCards.some((card) => card.value === 'joker')) {
-      performAction(
-        () => {
-          shuffleDeck();
-          removeAJoker();
-        },
-        { name: 'shake', condition: true }
-      );
-    }
-
     // If two cards are clicked, check if they match.
     if (clickedCards.length === 2) {
       const matched = clickedCards[0].value === clickedCards[1].value;
