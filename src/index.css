@@ -26,9 +26,12 @@ html {
   opacity: 1;
 }
 
+body {
+  overflow: hidden;
+}
+
 #root {
   position: relative;
-  padding-bottom: 40px;
   min-height: 100vh;
   max-width: 1280px;
   margin: 0 auto;

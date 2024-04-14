@@ -225,6 +225,15 @@ export default function useGame() {
     checkWin();
   }, [clickedCards]);
 
+  useEffect(() => {
+    // Disable overflow on body when the game is won.
+    if (gameWon) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+  }, [gameWon]);
+
   return {
     clickedCards,
     deck,
