@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import highscoreImage from '../assets/highscore.png';
-import Footer from './Footer';
+import Footer from './Attribution';
 
 type Props = {
   score: number;
