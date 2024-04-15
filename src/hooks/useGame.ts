@@ -4,6 +4,8 @@ import { Deck, PlayingCard } from '../utils/deck-utils';
 export default function useGame() {
   const [deck, setDeck] = useState(new Deck().deck);
   const [clickedCards, setClickedCards] = useState<PlayingCard[]>([]);
+
+  // TODO: Add a timer to the game
   const [score, setScore] = useState(0);
   const [scoreDiff, setScoreDiff] = useState(0);
   const [gameWon, setGameWon] = useState(true);
@@ -213,6 +215,7 @@ export default function useGame() {
    * Reset the game.
    */
   const resetGame = () => {
+    // FIXME: This causes a lag spike as cards are animated upon shuffling
     setDeck(new Deck().deck);
     setClickedCards([]);
     setScore(0);
