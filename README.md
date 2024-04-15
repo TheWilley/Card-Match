@@ -5,14 +5,14 @@ This is a React implementation of the memorization game "Card Match" where the p
 The game was made to sharpen my React knowledge and because it's fun. It was made in about 5 days or so (give or take).
 
 ## How To Use
-Simply go to the [official webpage](https://thewilley.github.io/CardMatchPro/) to get started, or run the app yourself by following these steps:
+Simply go to the [official webpage](https://thewilley.github.io/Card-Match/) to get started, or run the app yourself by following these steps:
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/TheWilley/CardMatchPro
+$ git clone https://github.com/TheWilley/Card-Match
 
 # Go into the repository
-$ cd CardMatchPro
+$ cd Card-Match
 
 # Install dependencies
 $ npm install
@@ -27,4 +27,4 @@ $ npm run preview
 $ npm run dev
 ```
 ## License
-[MIT](https://raw.githubusercontent.com/TheWilley/CardMatchPro/main/LICENSE)
+[MIT](https://raw.githubusercontent.com/TheWilley/Card-Match/main/LICENSE)
