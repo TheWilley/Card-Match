@@ -1,8 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function Loading() {
   const [loading, setLoading] = useState(true);
-  window.addEventListener('load', () => setLoading(false));
+  useEffect(() => {
+    if (document.readyState === 'complete') {
+      setLoading(false);
+    } else {
+      window.addEventListener('load', () => setLoading(false));
+    }
+  }, []);
 
   return (
     <div
