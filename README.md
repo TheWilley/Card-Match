@@ -1,4 +1,4 @@
-# Simon
+# Card Match
 
 This is a React implementation of the memorization game "Card Match" where the player has to match cards. Each time a match is found, the player is granted ten points. Each time a match is not found, the player looses one point. Same color matches grants 15 points.
 
